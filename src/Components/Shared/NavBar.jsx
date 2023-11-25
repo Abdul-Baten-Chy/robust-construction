@@ -21,7 +21,7 @@ const Navbar = () => {
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               {user?.photoURL ? (
-                <img src={user.photoURL} />
+                <img src={user.photoURL} className="object-cover" />
               ) : (
                 <img src="https://i.ibb.co/9YTytjp/profile.png" />
               )}
@@ -30,7 +30,7 @@ const Navbar = () => {
           {user ? (
             <button onClick={signOutUser}>Log out</button>
           ) : (
-            <Link to={"/signin"}><button className="w-[80px] h-7 bg-green-300 ">Login</button></Link>
+            <Link to={"/signIn"}><button className="w-[80px] h-7 bg-green-300 ">Login</button></Link>
           )}
         </div>
         

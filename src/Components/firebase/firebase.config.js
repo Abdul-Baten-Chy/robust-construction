@@ -7,13 +7,14 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCYb9yDBmsRL98wibcnPGw7IuoQAeI5c14",
-  authDomain: "juicy-restaurent.firebaseapp.com",
-  projectId: "juicy-restaurent",
-  storageBucket: "juicy-restaurent.appspot.com",
-  messagingSenderId: "1011353729540",
-  appId: "1:1011353729540:web:2cc6faf310f61e242d1351"
+  apiKey: "AIzaSyCQ1gXptjLXCpsh6CNt0UybZR2YzuRZc5Q",
+  authDomain: "robust-construction-1f942.firebaseapp.com",
+  projectId: "robust-construction-1f942",
+  storageBucket: "robust-construction-1f942.appspot.com",
+  messagingSenderId: "340078123514",
+  appId: "1:340078123514:web:0f67280839d001b38aec43"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

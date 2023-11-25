@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import Swal from "sweetalert2";
 
 
 export const MyAuthContext = createContext(null)
@@ -31,7 +32,15 @@ const AuthProvider = ({children}) => {
                   setUser(currentUser)
                   setLoading(false)
                 } else {
-                  alert('user is not available')
+                    setUser(null)
+                    Swal.fire({
+                        
+                        position: "top-end",
+                        icon: "success",
+                        title: "User is logged out",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                 }
               });
               return ()=>{
