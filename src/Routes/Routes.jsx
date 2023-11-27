@@ -7,6 +7,9 @@ import Contact from "../Pages/Contact/Contact";
 import SignUp from "../Pages/SignUp/SignUp";
 import SignIn from "../Pages/SignIn/SignIn";
 import Private from "./Private";
+import EmployeeList from "../Pages/dashboard/EmployeeList";
+import Progress from "../Pages/dashboard/Progress";
+import HrRoute from "./HrRoute";
 
 
 
@@ -38,8 +41,18 @@ const router = createBrowserRouter([
       ]
     },
     {
-      path:"/dashboard",
-      element:<Private><Dashboard></Dashboard></Private>
+      path:"dashboard",
+      element:<Private><Dashboard></Dashboard></Private>,
+      children:[
+        {
+          path:"employee-list",
+          element:<HrRoute><EmployeeList></EmployeeList></HrRoute>
+        },
+        {
+          path:"progress",
+          element:<Progress></Progress>
+        }
+      ]
     }
   ]);
 

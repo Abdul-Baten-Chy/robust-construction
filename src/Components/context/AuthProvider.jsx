@@ -61,7 +61,7 @@ const AuthProvider = ({children}) => {
         const signOutUser = ()=>{
             return signOut(auth)
         }
-    
+   
     const information={
         user,
         createAccount,
