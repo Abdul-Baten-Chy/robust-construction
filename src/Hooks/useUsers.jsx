@@ -9,7 +9,7 @@ const useUsers = () => {
 //    const axiosPublic=useAxiosPub()
    const {user}=useAuth()
 
-   const {data: users}=useQuery({
+   const {data: users, refetch}=useQuery({
     queryKey:[user.email],
     queryFn: async()=>{
         const res = await axiosSecure.get('/users')
@@ -19,7 +19,7 @@ const useUsers = () => {
    })
 
    
-   return users
+   return [users, refetch]
 };
 
 export default useUsers;

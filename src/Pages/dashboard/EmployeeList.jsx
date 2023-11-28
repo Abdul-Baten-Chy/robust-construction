@@ -1,15 +1,37 @@
-// import useHr from "../../Hooks/useHr";
+import { useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useUsers from "../../Hooks/useUsers";
-
+import { FaRegRectangleXmark, FaRegSquareCheck } from "react-icons/fa6";
+import Swal from "sweetalert2";
 const EmployeeList = () => {
-// const [isHr] = useHr()
 
-    const users = useUsers()
+    const axiosSecure = useAxiosSecure()
+    const [users, refetch] = useUsers()
     const employee = users?.filter(user=>user.role=='Employee')
+    const handleVerify=(_id)=>{
+        
+       axiosSecure.patch(`/users/verify/${_id}`)
+       .then(res =>{
+        console.log(res.data)
+        if(res.data.modifiedCount > 0){
+            refetch();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: 'user status changed',
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+        
+    })
+       
+    }
+
     return (
         <div className="overflow-x-auto">
   <table className="table">
-    {/* head */}
+    
     <thead>
       <tr>
         <th>
@@ -33,7 +55,9 @@ const EmployeeList = () => {
         <td>{singleEmployee.email} </td>
         <td>{singleEmployee.account} </td>
         <th>{singleEmployee.salary} </th>
-        <th>{singleEmployee.isVerified} </th>
+        <th className="text-center text-xl" onClick={()=>{handleVerify(singleEmployee._id)}}>{
+           singleEmployee.isVerified? <FaRegSquareCheck /> :<FaRegRectangleXmark /> 
+        }</th>
         <th>
             <button className="btn btn-ghost btn-xs">details</button>
         </th>

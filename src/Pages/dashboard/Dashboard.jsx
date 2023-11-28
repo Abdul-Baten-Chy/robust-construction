@@ -4,8 +4,9 @@ import useHr from "../../Hooks/useHr";
 
 const Dashboard = () => {
      const [isHr]= useHr()
-    const users = useUsers()
-    const employee = users?.filter(user=>user.role=='Employee')
+    const [users] = useUsers()
+    console.log(users);
+    const employee = users?.filter(user=>user?.role=='Employee')
     console.log(employee);
 
   return (
