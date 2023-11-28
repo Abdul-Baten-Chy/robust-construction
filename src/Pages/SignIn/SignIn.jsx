@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useUsers from "../../Hooks/useUsers";
 
 
 const SignIn = () => {
@@ -9,13 +10,15 @@ const SignIn = () => {
     const navigate = useNavigate();
     const location =useLocation()
     const { signInUser} = useAuth();
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-  console.log(location);
+    const [users]= useUsers()
+    const validUsers=users?.filter(user => user.isFired == true)
+ 
+    const { register, handleSubmit, formState: { errors }} = useForm();
+    
     const onSubmit = (data) => {
+      const firerdUser = validUsers?.find(item => item.email === data.email)
+
+      if(!firerdUser){
         signInUser(data.email, data.password)
         .then((res) => {
           const user = res.user;
@@ -38,6 +41,16 @@ const SignIn = () => {
                 timer: 2500,
               });
         });
+      }else{
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "user is fired and not allowed to sign in",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+      
     };
 
     return (

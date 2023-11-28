@@ -76,7 +76,7 @@ const AllEmplyeeList = () => {
         }
         </th>
         <th>
-            <button className="btn btn-ghost btn-xs" onClick={()=>handleFired(singleEmployee._id)}>
+            <button className="btn btn-primary btn-xs" onClick={()=>handleFired(singleEmployee._id)}>
                 {singleEmployee.isFired? 'Fired': 'fire'}
             </button>
         </th>

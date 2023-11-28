@@ -29,7 +29,7 @@ const EmployeeList = () => {
 
     return (
         <div className="overflow-x-auto">
-          <h2 className="text-center bg-green-400 px-10 py-2 text-white">Employee Number: <span className="font-bold">{employee.length}</span></h2>
+          <h2 className="text-center bg-green-400 px-10 py-2 text-white">Employee Number: <span className="font-bold">{employee?.length}</span></h2>
   <table className="table">
     
     <thead>
