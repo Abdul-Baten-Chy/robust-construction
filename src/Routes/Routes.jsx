@@ -10,6 +10,8 @@ import Private from "./Private";
 import EmployeeList from "../Pages/dashboard/EmployeeList";
 import Progress from "../Pages/dashboard/Progress";
 import HrRoute from "./HrRoute";
+import AllEmplyeeList from "../Pages/dashboard/AllEmplyeeList";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
         {
           path:"progress",
           element:<Progress></Progress>
+        },
+        {
+          path:"allemployee",
+          element:<AdminRoute><AllEmplyeeList></AllEmplyeeList></AdminRoute>
         }
       ]
     }

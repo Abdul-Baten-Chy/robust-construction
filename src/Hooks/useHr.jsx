@@ -11,7 +11,7 @@ const useHr = () => {
     const {data: isHr, isPending: isHrLoading}= useQuery({
         queryKey:['onlyHr'],
         queryFn:async()=>{
-            const res =await axiosSecure.get(`/users/hr/${user.email}`)
+            const res =await axiosSecure.get(`/users/role/${user.email}`)
             const hr = res.data.role === 'Hr Manager'
             return hr
         }

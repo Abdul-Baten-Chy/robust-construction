@@ -1,21 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
-import useUsers from "../../Hooks/useUsers";
 import useHr from "../../Hooks/useHr";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
-     const [isHr]= useHr()
-    const [users] = useUsers()
-    console.log(users);
-    const employee = users?.filter(user=>user?.role=='Employee')
-    console.log(employee);
-
+    const [isHr]= useHr()
+    const [isAdmin]= useAdmin()
   return (
     <div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
-          <h1>Number of Employee: {employee?.length}</h1>
+          
           <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
@@ -41,6 +37,12 @@ const Dashboard = () => {
             <li>
               <NavLink to={'progress'}>Progress</NavLink>
             </li>
+            </>
+           }
+           {
+            isAdmin && <>
+            <li className="text-3xl my-5">All Employee List </li>
+            <li><NavLink to={'allemployee'}>All Employee List</NavLink> </li>
             </>
            }
             <hr className="w-48 h-1  my-2 bg-gray-500 border-0 rounded"/>
