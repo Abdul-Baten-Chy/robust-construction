@@ -1,6 +1,6 @@
 import { FaRegRectangleXmark, FaRegSquareCheck } from "react-icons/fa6";
-import useUsers from "../../Hooks/useUsers";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useUsers from "../../../Hooks/useUsers";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 
@@ -30,21 +30,34 @@ const AllEmplyeeList = () => {
     }
     
     const handleFired=(_id)=>{
-        axiosSecure.patch(`/users/fire/${_id}`)
-        .then(res =>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: 'employee has been fired',
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Fire him!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/users/fire/${_id}`)
+                .then(res =>{
+                    console.log(res.data)
+                    if(res.data.modifiedCount > 0){
+                        refetch();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: 'employee has been fired',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+                    }
+                    
+                })
             }
-            
-        })
+          });
+        
     }
     
     return (

@@ -9,7 +9,7 @@ const SignIn = () => {
 
     const navigate = useNavigate();
     const location =useLocation()
-    const { signInUser} = useAuth();
+    const { signInUser } = useAuth();
     const [users]= useUsers()
     const validUsers=users?.filter(user => user.isFired == true)
  

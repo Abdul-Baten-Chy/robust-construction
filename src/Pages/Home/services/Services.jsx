@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import SubHead from "../../../Components/SubHead/SubHead";
 import useAxiosPub from "../../../Hooks/useAxiosPub";
 import { useQuery } from "@tanstack/react-query";
@@ -14,12 +13,13 @@ const Services = () => {
             const res = await axiosPublic.get("/services");
             return res.data;
         }})
+        console.log(services);
     return (
         <div>
             <SubHead title={'Our Services'}></SubHead>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 mx-auto gap-6">
             {
-                services.map(service=><Crad key={service._id} service={service}></Crad>)
+                services?.map(service=><Crad key={service._id} service={service}></Crad>)
             }
             </div>
 

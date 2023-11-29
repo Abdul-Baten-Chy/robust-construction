@@ -7,11 +7,16 @@ import Contact from "../Pages/Contact/Contact";
 import SignUp from "../Pages/SignUp/SignUp";
 import SignIn from "../Pages/SignIn/SignIn";
 import Private from "./Private";
-import EmployeeList from "../Pages/dashboard/EmployeeList";
-import Progress from "../Pages/dashboard/Progress";
+import EmployeeList from "../Pages/dashboard/Hr/EmployeeList";
+import Progress from "../Pages/dashboard/Hr/Progress";
 import HrRoute from "./HrRoute";
-import AllEmplyeeList from "../Pages/dashboard/AllEmplyeeList";
+import AllEmplyeeList from "../Pages/dashboard/Admin/AllEmplyeeList";
 import AdminRoute from "./AdminRoute";
+import Error from "../error/Error";
+import Employee from "../Pages/dashboard/Employee/Employee";
+import EmployeeRoute from "./EmployeeRoute";
+import PaymentHistory from "../Pages/dashboard/Employee/PaymentHistory";
+import WorkSheet from "../Pages/dashboard/Employee/WorkSheet";
 
 
 
@@ -19,6 +24,7 @@ const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<Error></Error>,
       children:[
         {
             path:"/",
@@ -57,6 +63,18 @@ const router = createBrowserRouter([
         {
           path:"allemployee",
           element:<AdminRoute><AllEmplyeeList></AllEmplyeeList></AdminRoute>
+        },
+        {
+          path: 'employee',
+          element: <EmployeeRoute><Employee></Employee></EmployeeRoute>
+        },
+        {
+          path:'history',
+          element:<PaymentHistory></PaymentHistory>
+        },
+        {
+          path:'workSheet',
+          element:<WorkSheet></WorkSheet>
         }
       ]
     }

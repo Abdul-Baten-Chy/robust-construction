@@ -1,10 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useHr from "../../Hooks/useHr";
 import useAdmin from "../../Hooks/useAdmin";
+import useEmployee from "../../Hooks/useEmployee";
+import useAuth from "../../Hooks/useAuth";
 
 const Dashboard = () => {
     const [isHr]= useHr()
     const [isAdmin]= useAdmin()
+    const [isEmployee]= useEmployee()
+    const {signOutUser}=useAuth()
+    console.log(isEmployee);
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -45,12 +50,27 @@ const Dashboard = () => {
             <li><NavLink to={'allemployee'}>All Employee List</NavLink> </li>
             </>
            }
+           {
+            isEmployee && <>
+             <li className="text-3xl my-5">Wellcome to Employees Home</li>
+            <li>
+              <NavLink to={'history'}>Payment History</NavLink>
+            </li>
+            <li>
+              <NavLink to={'workSheet'}>Work sheet</NavLink>
+            </li>
+            </>
+           }
             <hr className="w-48 h-1  my-2 bg-gray-500 border-0 rounded"/>
             <li>
               <NavLink to={'/'}>Home</NavLink>
             </li>
             <li>
               <NavLink to={'/contact'}>Contact</NavLink>
+            </li>
+            <li onClick={signOutUser} className="cursor-pointer">
+            <span >Log Out</span>
+              
             </li>
           </ul>
           

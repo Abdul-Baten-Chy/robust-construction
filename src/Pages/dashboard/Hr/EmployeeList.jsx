@@ -1,5 +1,5 @@
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import useUsers from "../../Hooks/useUsers";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useUsers from "../../../Hooks/useUsers";
 import { FaRegRectangleXmark, FaRegSquareCheck } from "react-icons/fa6";
 import Swal from "sweetalert2";
 const EmployeeList = () => {
