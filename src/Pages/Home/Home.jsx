@@ -1,5 +1,6 @@
 import Header from "../../Components/Header/Header";
 import Testomonial from "../../Components/Testemonial/Testomonial";
+import NewArrival from "./NewArrival";
 import Services from "./services/Services";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Header></Header>
             <Services></Services>
+            <NewArrival></NewArrival>
             <Testomonial></Testomonial>
         </div>
     );
